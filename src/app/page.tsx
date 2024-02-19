@@ -60,10 +60,19 @@ export default () => {
                                 type="number"
                                 step="any"
                                 className="w-[calc(100vw-250px)] ml-auto text-center md:text-left"
-                                onChange={({ target }) => setPopulation({
-                                    ...population,
-                                    [reference]: parseFloat(target.value)
-                                })}
+                                onChange={({ target }) => {
+                                    if (reference === "t" && (population.d || population.r)) {
+                                        updatePercentage(population.d ? "p" : "q", (population.d || population.r) / parseFloat(target.value))
+                                    } else if (population.d && population.r && !percentage.p && !percentage.q) {
+                                        updatePercentage(reference === "d" ? "p" : "q", parseFloat(target.value) / (population.d + population.r))
+                                    } else if (population.t) {
+                                        updatePercentage(reference === "d" ? "p" : "q", parseFloat(target.value) / population.t)
+                                    }
+                                    setPopulation({
+                                        ...population,
+                                        [reference]: parseFloat(target.value)
+                                    })
+                                }}
                             />
                         </div>
                     ))}
@@ -108,7 +117,7 @@ export default () => {
                                                             || population.r + population.d
                                                             || +(population.d / percentage.p).toFixed(0)
                                                             || +(population.r / percentage.q).toFixed(0)
-                                                            || "?"
+                                                            || 0
                                                         }
                                                     </p>
                                                 </div>
@@ -121,7 +130,7 @@ export default () => {
                                                             || population.t - population.d / percentage.p
                                                             || +(population.t * percentage.p).toFixed(0)
                                                             || +(population.r / percentage.q - population.r).toFixed(0)
-                                                            || "?"
+                                                            || 0
                                                         }
                                                     </p>
                                                 </div>
@@ -134,7 +143,7 @@ export default () => {
                                                             || population.t - population.r / percentage.q
                                                             || +(population.t * percentage.q).toFixed(0)
                                                             || +(population.d / percentage.p - population.d).toFixed(0)
-                                                            || "?"
+                                                            || 0
                                                         }
                                                     </p>
                                                 </div>
@@ -152,7 +161,13 @@ export default () => {
                                                         <p>{label.slice(0, -1).join(" ")}</p>
                                                         <div className="flex ml-auto space-x-4">
                                                             <p>{label.pop()!.slice(1, -1)}</p>
-                                                            <p className="opacity-80">{value || "?"}</p>
+                                                            <p className="opacity-80">
+                                                                {
+                                                                    value
+                                                                    || (reference === "pq2" && percentage.p ** 2)
+                                                                    || "0"
+                                                                }
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 )
