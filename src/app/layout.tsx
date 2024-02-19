@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
     title: "hw",
-    description: "Hardy-Weinberg Calculator"
+    description: "Hardy-Weinberg Evaluator // 33tm"
 }
 
 export default ({ children }: Readonly<{ children: React.ReactNode }>) => {
