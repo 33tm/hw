@@ -100,8 +100,10 @@ export default () => {
                         <CredenzaContent>
                             <CredenzaHeader>
                                 <CredenzaTitle>Output</CredenzaTitle>
-                                <CredenzaDescription className="italic text-[#999]">
-                                    Zero&apos;s may render as question marks
+                                <CredenzaDescription className="italic text-[#999] hover:underline">
+                                    <a href="https://github.com/33tm/hw" target="__blank">
+                                        github.com/33tm/hw
+                                    </a>
                                 </CredenzaDescription>
                             </CredenzaHeader>
                             <CredenzaBody className="font-bold space-y-2">
