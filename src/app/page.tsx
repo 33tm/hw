@@ -62,11 +62,11 @@ export default () => {
                                 className="w-[calc(100vw-250px)] ml-auto text-center md:text-left"
                                 onChange={({ target }) => {
                                     if (reference === "t" && (population.d || population.r)) {
-                                        updatePercentage(population.d ? "p" : "q", (population.d || population.r) / parseFloat(target.value))
+                                        updatePercentage(population.d ? "p" : "q", Math.sqrt((population.d || population.r) / parseFloat(target.value)))
                                     } else if (population.d && population.r && !percentage.p && !percentage.q) {
-                                        updatePercentage(reference === "d" ? "p" : "q", parseFloat(target.value) / (population.d + population.r))
+                                        updatePercentage(reference === "d" ? "p" : "q", Math.sqrt(parseFloat(target.value) / (population.d + population.r)))
                                     } else if (population.t) {
-                                        updatePercentage(reference === "d" ? "p" : "q", parseFloat(target.value) / population.t)
+                                        updatePercentage(reference === "d" ? "p" : "q", Math.sqrt(parseFloat(target.value) / population.t))
                                     }
                                     setPopulation({
                                         ...population,
