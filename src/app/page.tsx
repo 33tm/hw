@@ -46,7 +46,6 @@ export default () => {
             qq: +(q ** 2).toFixed(2)
         })
     }
-    console.log(percentage, population)
 
     return (
         <div className="flex flex-col space-y-1 mt-3">
