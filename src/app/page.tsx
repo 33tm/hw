@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/credenza"
 
 export default () => {
+    const [disclaimer, setDisclaimer] = useState(true)
     const [population, setPopulation] = useState({ t: NaN, d: NaN, r: NaN })
     const [percentage, setPercentage] = useState({ p: 0, q: 0, pp: 0, pq2: 0, qq: 0 })
 
@@ -186,7 +187,7 @@ export default () => {
                     </Credenza>
                 </form>
             </div>
-            <Credenza open>
+            <Credenza open={disclaimer}>
                 <CredenzaContent>
                     <CredenzaHeader>
                         <CredenzaTitle>
@@ -208,9 +209,8 @@ export default () => {
                         </a>
                     </CredenzaBody>
                     <CredenzaFooter>
-
                         <CredenzaClose asChild>
-                            <Button variant="secondary">
+                            <Button variant="secondary" onClick={() => setDisclaimer(false)}>
                                 Ignore
                             </Button>
                         </CredenzaClose>
