@@ -186,6 +186,37 @@ export default () => {
                     </Credenza>
                 </form>
             </div>
+            <Credenza open>
+                <CredenzaContent>
+                    <CredenzaHeader>
+                        <CredenzaTitle>
+                            Not very well made
+                        </CredenzaTitle>
+                        <CredenzaDescription>
+                            Use at your own risk :D
+                        </CredenzaDescription>
+                    </CredenzaHeader>
+                    <CredenzaBody className="text-sm italic opacity-80 text-center sm:text-left">
+                        Why not make it better~
+                        <br></br>
+                        <a
+                            href="https://github.com/33tm/hw"
+                            target="__blank"
+                            className="hover:underline"
+                        >
+                            github.com/33tm/hw
+                        </a>
+                    </CredenzaBody>
+                    <CredenzaFooter>
+
+                        <CredenzaClose asChild>
+                            <Button variant="secondary">
+                                Ignore
+                            </Button>
+                        </CredenzaClose>
+                    </CredenzaFooter>
+                </CredenzaContent>
+            </Credenza>
         </div>
     )
 }
